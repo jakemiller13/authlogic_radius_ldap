@@ -174,22 +174,24 @@ module AuthlogicRadiusLdap
           end
 
           begin
-            radius_response = nil
+            ldap_response = nil
             begin
               Timeout.timeout(radius_timeout) do
-                radius_response = ldap.auth(
+                ldap_response = ldap.auth(
                   radius_login, radius_password, radius_shared_secret
                 )
               end
             rescue Timeout::Error
               if Rails.version.to_i >= 3
+                # TODO: extend error message here
                 errors.add(:base, I18n.t('error_messages.radius_server_unavailable', :default => "No response from RADIUS server at #{radius_host}:#{radius_port}"))
               else
                 errors.add_to_base(I18n.t('error_messages.radius_server_unavailable', :default => "No response from RADIUS server at #{radius_host}:#{radius_port}"))
               end
             end
-            
-            if radius_response && radius_response[:code] == 'Access-Accept'
+
+            if ldap_response && ldap.bind
+            # if radius_response && radius_response[:code] == 'Access-Accept'
               #authentication succeeded, find or create the user
               self.attempted_record = search_for_record(find_by_radius_login_method, radius_login)
 
