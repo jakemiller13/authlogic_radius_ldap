@@ -35,9 +35,11 @@ Gem::Specification.new do |s|
   if s.respond_to? :add_runtime_dependency then
     s.add_runtime_dependency(%q<authlogic>.freeze, [">= 2.0"])
     s.add_runtime_dependency(%q<radiustar>.freeze, [">= 0.0.3"])
+    s.add_runtime_dependency(%q<net-ldap>.freeze, [">= 0.19"])
   else
     s.add_dependency(%q<authlogic>.freeze, [">= 2.0"])
     s.add_dependency(%q<radiustar>.freeze, [">= 0.0.3"])
+    s.add_dependency(%q<net-ldap>.freeze, [">= 0.19"])
   end
 end
 
