@@ -1,6 +1,6 @@
 require 'authlogic'
 
-module AuthlogicRadius
+module AuthlogicRadiusLdap
   module ActsAsAuthentic
     def self.included(klass)
       klass.class_eval do
