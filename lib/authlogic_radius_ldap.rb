@@ -1,6 +1,6 @@
-require "authlogic_radius/version"
-require "authlogic_radius/acts_as_authentic"
-require "authlogic_radius/session"
+require "authlogic_radius_ldap/version"
+require "authlogic_radius_ldap/acts_as_authentic"
+require "authlogic_radius_ldap/session"
 
 ActiveRecord::Base.send(:include, AuthlogicRadius::ActsAsAuthentic)
 Authlogic::Session::Base.send(:include, AuthlogicRadius::Session)

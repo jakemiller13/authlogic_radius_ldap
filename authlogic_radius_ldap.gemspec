@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
     "README.rdoc"
   ]
   s.files = [
-    "lib/authlogic_radius.rb",
+    "lib/authlogic_radius_ldap.rb",
     "lib/authlogic_radius_ldap/acts_as_authentic.rb",
     "lib/authlogic_radius_ldap/session.rb",
     "lib/authlogic_radius_ldap/version.rb"
