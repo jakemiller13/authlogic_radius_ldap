@@ -4,10 +4,10 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gemspec|
-    gemspec.name = "authlogic_radius"
-    gemspec.summary = "Extension of the Authlogic library adding RADIUS support."
+    gemspec.name = "authlogic_radius_ldap"
+    gemspec.summary = "Extension of the Authlogic library adding RADIUS and LDAP support."
     gemspec.description = <<-EOF
-This is a simple gem to allow authentication against a RADIUS server.
+This is a simple gem to allow authentication against a RADIUS or LDAP server.
 EOF
     gemspec.email = "langhorst@neb.com"
     gemspec.homepage = "http://github.com/bwlang/authlogic_radius"

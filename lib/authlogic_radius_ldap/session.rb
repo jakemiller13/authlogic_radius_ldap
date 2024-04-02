@@ -1,7 +1,8 @@
 require 'timeout'
 require 'radiustar'
+require 'net/ldap'
 
-module AuthlogicRadius
+module AuthlogicRadiusLdap
   module Session
     
     def self.included(klass)
@@ -160,7 +161,9 @@ module AuthlogicRadius
           return if errors.count > 0
 
           begin
-            req = Radiustar::Request.new("#{radius_host}:#{radius_port}")
+            ldap = Net::LDAP.new
+            ldap.host = radius_host
+            ldap.port = radius_port
           rescue => e
             if Rails.version.to_i >= 3
               errors.add(:base, I18n.t('error_messsages.cannot_resolve_radius_server', :default => "Unable to find a network path to RADIUS server at #{radius_host}:#{radius_port}"))
@@ -174,7 +177,9 @@ module AuthlogicRadius
             radius_response = nil
             begin
               Timeout.timeout(radius_timeout) do
-                radius_response = req.authenticate(radius_login,radius_password,radius_shared_secret)
+                radius_response = ldap.auth(
+                  radius_login, radius_password, radius_shared_secret
+                )
               end
             rescue Timeout::Error
               if Rails.version.to_i >= 3
