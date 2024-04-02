@@ -14,7 +14,7 @@ EOF
     gemspec.authors = ["Brad Langhorst"]
     gemspec.add_dependency 'authlogic', ">=2.0"
     gemspec.add_dependency 'radiustar', ">=0.0.3"
-    gemspec.add_dependency 'net-ldap'
+    gemspec.add_dependency 'net-ldap', ">=0.19"
     gemspec.files = Dir['lib/**/*.rb']
   end
   Jeweler::GemcutterTasks.new
